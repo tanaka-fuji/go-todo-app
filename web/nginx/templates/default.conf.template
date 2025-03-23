@@ -1,11 +1,14 @@
 server {
-    listen       80;
-    listen  [::]:80;
+    listen       443 ssl;
+    listen  [::]:443 ssl;
     server_name  localhost;
 
+    ssl_certificate /etc/nginx/ssl/cert.pem;
+    ssl_certificate_key /etc/nginx/ssl/cert.key;
+
     location /api {
-      proxy_pass  http://api:${API_PORT};
-      include     /etc/nginx/proxy.conf;
+        proxy_pass  http://api:${API_PORT};
+        include     /etc/nginx/proxy.conf;
     }
 
     location / {
