@@ -100,5 +100,5 @@ func main() {
 	}
 	db.AutoMigrate(&item{})
 	r := setupRouter()
-	r.Run(":8080")
+	r.Run(":" + os.Getenv("API_PORT"))
 }
