@@ -18,6 +18,6 @@ FROM nginx:1.27.4-alpine-slim AS production
 COPY --from=build /app/dist /usr/share/nginx/html
 COPY ./nginx/templates/default.conf.template /etc/nginx/templates/default.conf.template
 COPY ./nginx/proxy.conf /etc/nginx/proxy.conf
-COPY ./nginx/ssl/cert.pem /etc/nginx/ssl/cert.pem
-COPY ./nginx/ssl/cert.key /etc/nginx/ssl/cert.key
+COPY ./nginx/ssl/sample.pem /etc/nginx/ssl/sample.pem
+COPY ./nginx/ssl/sample.key /etc/nginx/ssl/sample.key
 CMD ["nginx", "-g", "daemon off;"]
