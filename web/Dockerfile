@@ -8,7 +8,6 @@ COPY . .
 CMD ["npm", "run", "dev"]
 
 FROM base AS build
-ARG VITE_API_HOST
 ARG VITE_API_PORT
 RUN npm ci
 COPY . .

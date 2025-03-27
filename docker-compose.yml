@@ -5,7 +5,6 @@ services:
       context: ./web
       target: ${NODE_ENV}
       args:
-        - VITE_API_HOST=${API_HOST}
         - VITE_API_PORT=${API_PORT}
     depends_on:
       - api
@@ -14,7 +13,6 @@ services:
     environment:
       - WEB_PORT=${WEB_PORT}
       - API_PORT=${API_PORT}
-      - VITE_API_HOST=${API_HOST}
       - VITE_API_PORT=${API_PORT}
     volumes:
       - ./web:/app
