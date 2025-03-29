@@ -1,9 +1,9 @@
 FROM node:23.10.0 AS base
 WORKDIR /app
-COPY ["package.json", "package-lock.json", "./"]
+COPY package*.json ./
 
 FROM base AS development
-RUN npm ci
+RUN npm install
 COPY . .
 CMD ["npm", "run", "dev"]
 
@@ -15,8 +15,5 @@ RUN npm run build
 
 FROM nginx:1.27.4-alpine-slim AS production
 COPY --from=build /app/dist /usr/share/nginx/html
-COPY ./nginx/templates/default.conf.template /etc/nginx/templates/default.conf.template
-COPY ./nginx/proxy.conf /etc/nginx/proxy.conf
-COPY ./nginx/ssl/sample.pem /etc/nginx/ssl/sample.pem
-COPY ./nginx/ssl/sample.key /etc/nginx/ssl/sample.key
+COPY ./nginx /etc/nginx
 CMD ["nginx", "-g", "daemon off;"]
