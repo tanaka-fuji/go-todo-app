@@ -4,9 +4,8 @@ COPY ["go.mod", "go.sum", "./"]
 
 FROM base AS debug
 RUN go mod download
-RUN go install github.com/air-verse/air@latest
 COPY . .
-CMD ["air"]
+CMD ["go", "run", "main.go"]
 
 FROM base AS build
 RUN go mod tidy

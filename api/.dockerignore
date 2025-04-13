@@ -1,7 +1,5 @@
-**/tmp/
-**/.git
-**/README.md
-**/LICENSE
-**/.vscode
-**/.env
-**/.editorconfig
+.git/
+README.md
+.vscode/
+tmp/
+**/.DS_Store
